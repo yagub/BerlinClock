@@ -117,4 +117,16 @@ public class BerlinClockTest {
       berlinClock.convertTime("-1:00:00");
   }
   
+ // Berlin Clock should throw IllegalArgumentException
+ @Test(expected = IllegalArgumentException.class)
+ public void givenEmptyStringBerlinClockShouldResultInThrowException() {
+     berlinClock.convertTime("");
+ }
+
+ // Berlin Clock should throw IllegalArgumentException
+ @Test(expected = IllegalArgumentException.class)
+ public void givenNullBerlinClockShouldResultInThrowException() {
+   berlinClock.convertTime(null);
+ }
+ 
 }
