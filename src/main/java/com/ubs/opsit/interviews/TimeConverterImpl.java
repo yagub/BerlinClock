@@ -9,6 +9,11 @@ public class TimeConverterImpl implements TimeConverter {
 
 	@Override
 	public String convertTime(String aTime) {
+	  if (!TimeValidator.isValid(aTime)) {
+      throw new IllegalArgumentException("invalid time format. " +
+              "Expected string in 24 hour format: hh:mm:ss. " +
+              "Regexp: " + TimeValidator.TIME_FORMAT_REGEXP);
+	  }
 	  String[] time = aTime.split(":");
 	  String res = getSeconds(Integer.parseInt(time[2])) + System.lineSeparator() + 
         getTopHours(Integer.parseInt(time[0])) + System.lineSeparator() +
